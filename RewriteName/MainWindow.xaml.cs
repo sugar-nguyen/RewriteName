@@ -43,7 +43,7 @@ namespace RewriteName
             timer.Interval = 2000;
             timer.Tick += timer_Tick;
             timer.Disposed += timer_Disposed;
-            timer.Start();
+         //   timer.Start();
 
 
             worker = new BackgroundWorker();
@@ -197,13 +197,15 @@ namespace RewriteName
         public void DoTheWork(string file, string newName, string saveFileSrc, int i)
         {
             string filename;
+            string _i = i < 10 ? string.Concat("0", i) : i.ToString();
+
             if (symbol == "( )")
             {
-                filename = string.Format("{0}{1}{2}{3}{4}", newName, "(", i, ")", System.IO.Path.GetExtension(file));
+                filename = string.Format("{0}{1}{2}{3}{4}", newName, "(", _i, ")", System.IO.Path.GetExtension(file));
             }
             else
             {
-                filename = string.Format("{0}{1}{2}{3}", newName, symbol, i, System.IO.Path.GetExtension(file));
+                filename = string.Format("{0}{1}{2}{3}", newName, symbol, _i, System.IO.Path.GetExtension(file));
             }
             try
             {
